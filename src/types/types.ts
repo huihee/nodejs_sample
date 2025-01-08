@@ -13,3 +13,27 @@ const wrapperStr = new String(num); // wrapper 클래스 사용법
 // 강제 형변환 할때 wrapper 클래스 사용
 // 자바는 대문자로 시작하는게 많아서 헷갈릴 수 있음
 // wrapper 기능이 실제로 있기 때문에 오류는 안남
+
+// Array
+let arrayOfNumbers1:number[];
+arrayOfNumbers1 = [5];
+arrayOfNumbers1 = [5, 10, 30];
+// [5], [5,5,10,30]; (X)
+// [5, 10, 30]
+
+// 배열은 인덱스로 접근
+console.log(arrayOfNumbers1[0]); // 5
+console.log(arrayOfNumbers1[1]); // 10
+console.log(arrayOfNumbers1[2]); // 30
+
+// 열의 초기화
+
+let arrayOfNumbers2: Array<number>;
+arrayOfNumbers2 = [6];
+arrayOfNumbers2 = [6, 8, 20];
+console.log(arrayOfNumbers2[2])  //2
+
+// 해당 타입만 허용 되는 배열 = 튜플
+// let singleNumberTuple: [number]; // 한칸을 만들건데, number 타입만 들어갈 수 있다.
+// 두칸을 만드려면 >> let singleNumberTuple: [number,number];
+// singleNumberTuple = [5];
