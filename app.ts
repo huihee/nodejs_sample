@@ -1,5 +1,6 @@
 console.log("hello")
 
+// 변수의 타입 명시 방법
 let a:number = 10; //숫자, number
 let b:string = "Hello"; // 문자열, string
 let c:boolean = true; // false, Boolean 참, 거짓
@@ -43,4 +44,10 @@ let meterLength = addLength / 10;
 
 console.log(addLength)
 console.log(meterLength)
+
+// ----------------------
+// 메서드의 타입 명시 방법
+function add(x:number, y:number):number {
+    return x + y;
+}
 
