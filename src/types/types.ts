@@ -38,8 +38,9 @@ console.log(arrayOfNumbers2[2])  //2
 // 두칸을 만드려면 >> let singleNumberTuple: [number,number];
 // singleNumberTuple = [5];
 
+// 함수의 명시적 타입 지정 방법 (매개변수 / Parameter)
 function greeter(name:string){
-    return "Hello, "+ name
+    return "Hello, " + name
 }
 
 console.log(greeter("Tom"));
