@@ -37,3 +37,10 @@ console.log(arrayOfNumbers2[2])  //2
 // let singleNumberTuple: [number]; // 한칸을 만들건데, number 타입만 들어갈 수 있다.
 // 두칸을 만드려면 >> let singleNumberTuple: [number,number];
 // singleNumberTuple = [5];
+
+function greeter(name:string){
+    return "Hello, "+ name
+}
+
+console.log(greeter{T"Tom"}));
+
