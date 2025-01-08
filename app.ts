@@ -51,3 +51,10 @@ function add(x:number, y:number):number {
     return x + y;
 }
 
+const obj = { width: 10, height: 15 };
+const area = obj.width * obj.height;
+
+
+
+
+
