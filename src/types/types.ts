@@ -42,5 +42,5 @@ function greeter(name:string){
     return "Hello, "+ name
 }
 
-console.log(greeter{T"Tom"}));
+console.log(greeter("Tom"));
 
