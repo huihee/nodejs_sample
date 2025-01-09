@@ -93,60 +93,40 @@ user1.study();
 user2.study();
 
 // 클래스의 상속
-class CleaningRobot { // Members
+// 단일책임원칙
+class CleaningRobot extends Robot { // Members
     // Property(속성) 또는 Field(속성, 필드)
-    name: string;
-    model: string;
     cleaningSchedule: string[];
-    status: string = "Active"; // 기본값 Default 값을 설정 할 수 있음
 
-    // Constructor(생성자) / 값의 초기화와 관련있기 때문에 필수 요소이다.
-    // 객체의 초기상태를 설정하기 위해 사용
-    // 객체의 속성값을 쉽게 전달 가능
+    // Constructor(생성자)
     constructor(name: string, model: string, cleaningSchedule: string[]){ // param, 매개변수 (전달받는 값)
-        // this의 name과 parma의 name은 다르다
-        // this.name은 클래스의 name, this = Robot
-        this.name = name; // 매개변수로 필드 초기화
-        this.model = model;
+        super(name, model) // 부모가 가지고 있는 필드의 값을 넘겨줄때 super 키워드 사용
         this.cleaningSchedule = cleaningSchedule;
-    } // 객체가 만들어진 후
+    };
 
     // Method(행동)
-    // 클래스를 사용하면 한번에 수정 가능
-    performTask(task: string){
-        console.log(`${this.name} is performing ${task}.`)
-    };
-
-    updateStatus(newStatus: string) {
-        this.status = newStatus;
-        console.log(`${this.name}'s status is now ${this.status}`);
-    };
-
-    performCleaning() {
+    // override : 부모의 기능을 추가 또는 재정의 하기 위해 사용 (new의 개념이 아님)
+    // override performTask() {} >> // 부모의 performTask를 쓸지 청소봇의 performTask를 쓸지 모르기 때문에 override 사용
+    // 다형성 : override를 통해서 다형성 구현
+    performTask() { // override는 자동으로 인식되기 떄문에 생략 가능하다.
         console.log(`${this.name} is cleaning according to the schedule ${this.cleaningSchedule.join(", ")}`);
     }
 }
 
 class CookingRobot { // Members
-    // Property(속성) 또는 Field(속성, 필드)
     name: string;
     model: string;
     availableMenus: string[];
-    status: string = "Active"; // 기본값 Default 값을 설정 할 수 있음
+    status: string = "Active";
 
-    // Constructor(생성자) / 값의 초기화와 관련있기 때문에 필수 요소이다.
-    // 객체의 초기상태를 설정하기 위해 사용
-    // 객체의 속성값을 쉽게 전달 가능
-    constructor(name: string, model: string, availableMenus: string[]){ // param, 매개변수 (전달받는 값)
-        // this의 name과 parma의 name은 다르다
-        // this.name은 클래스의 name, this = Robot
-        this.name = name; // 매개변수로 필드 초기화
+    // Constructor(생성자)
+    constructor(name: string, model: string, availableMenus: string[]){
+        this.name = name;
         this.model = model;
         this.availableMenus = availableMenus;
-    } // 객체가 만들어진 후
+    }
 
     // Method(행동)
-    // 클래스를 사용하면 한번에 수정 가능
     performTask(task: string){
         console.log(`${this.name} is performing ${task}.`)
     };
