@@ -45,3 +45,22 @@ function greeter(name:string){
 
 console.log(greeter("Tom"));
 
+// 객체 타입
+// 객체는 계층 구조를 가진다는 특징이 있음
+const car = {
+    color: 'red', // 쉼표로 각 속성을 구분하여 작성
+    model: 'Sedan',
+    manufacturer: 'Toyota'
+}
+
+// 도트 연산자로 속성에 접근
+console.log(car.color);
+
+// 구분자를 , 또는 ; 로 사용할 수도 있음
+// function printOutput(pt: {x:number; y:number;}) {
+// function printOutput(pt: {x, y}) { // Any type 오류 : 타입을 어떤 타입이든 아무걸로나 보겠다는 뜻
+function printOutput(pt: {x:number, y:number}) { // 파라미터 내부에서 초기화 가능
+    console.log("The X value is : " + pt.x);
+    console.log("The Y value is : " + pt.y);
+}
+
