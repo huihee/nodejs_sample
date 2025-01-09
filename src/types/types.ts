@@ -207,3 +207,30 @@ const myJob: Job = {
     title: "SW Engineer",
     company: "Tech"
 }
+
+
+// 타입 단언 Type Assertions
+const apiResponse: any = {
+    id: 1,
+    title: "TypeScript Begins",
+    content: "This is contents of Article"
+};
+
+// Error지만 찾지 못하는 경우(any 타입 사용)
+// console.log(apiResponse.like);
+
+interface Content {
+    id: number;
+    title: string;
+    content: string;
+}
+
+// Type assertions using 'as' keyword (방법1)
+const content1 = apiResponse as Content; // 인터페이스로 감싸서 전달
+// Type assertions using <> bracket syntax (방법2)
+const content2 = <Content>apiResponse;
+
+// console.log(content1.like); // like does not exist
+console.log(content2.id); //OK
+console.log(content2.content); //OK
+
