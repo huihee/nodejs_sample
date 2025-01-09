@@ -173,23 +173,37 @@ interface Point {
 
 // 인터페이스를 사용하면 기존 코드를 수정하지 않고 계속해서 확장 가능
 
-// Type Alias의 확장 예시
-type Animal = {
-    name: string;
+// // Type Alias의 확장 예시
+// type Animal = {
+//     name: string;
+// }
+
+// type Bear = Animal & {
+//     honey: boolean;
+// }
+
+// function getBear(): Bear {
+//     return {
+//         name: "Grizzly",
+//         honey: true
+//     };
+// }
+
+// const bear = getBear();
+// console.log(bear.name) // from Animal type
+// console.log(bear.honey)
+
+// 인터페이스 병합의 차이점
+interface Job {
+    title: string;
 }
 
-type Bear = Animal & {
-    honey: boolean;
+interface Job { // type으로 변경하면 중복 코드 오류 발생
+    // union을 쓰거나 분기문으로 나눠서 쓰거나 해야됨 >> 5원칙 위반 (인터페이스가 더 유리한 이유)
+    company: string;
 }
 
-function getBear(): Bear {
-    return {
-        name: "Grizzly",
-        honey: true
-    };
+const myJob: Job = {
+    title: "SW Engineer",
+    company: "Tech"
 }
-
-const bear = getBear();
-console.log(bear.name) // from Animal type
-console.log(bear.honey)
-
