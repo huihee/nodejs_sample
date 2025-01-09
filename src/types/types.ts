@@ -84,4 +84,18 @@ printName({first: "Bob"});
 // 2. npx tsc types.ts 로 컴파일
 // 3. node types.js 로 실행
 
+// Any 타입 : 타입 검사를 작성 안되도록 하는 키워드 (재사용성을 위함)
+// 많은 js 프로젝트들을 사용하는데 문제가 되지 않도록 하기 위해 사용
+// >> js에서는 정상적으로 작동한다면 재활용 가능하므로 문제가 발생하지 않도록 해줌
+// Any 타입은 되도록 사용하지 않는다.
+
+let object: any = { x:0 };
+
+// any 키워드를 사용하면 아래 내용에 대해 검사를 하지 않음
+object.foo();
+object();
+object.bar = 100;
+object = "hello";
+const n: number = object;
+
 
