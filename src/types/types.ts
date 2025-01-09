@@ -103,7 +103,7 @@ const n: number = object;
 
 // Union 타입 (권장하진 않음, 타입을 나눠서 함수를 분리하는 것을 권장)
 // 2개의 타입을 가질 수 있음을 명시 (or를 의미)
-function printId(id:number|string){ // id:ID로 사용자 지정 타입 사용 가능
+function printId(id:number|string){ // printId(id:ID)로 사용자 지정 타입 사용 가능
     // console.log(id.toUpperCase()); >> 타입이 2개이므로 오류 (number일 경우 처리 불가)
     if(typeof id === "string") {
         console.log(id.toUpperCase());
@@ -118,11 +118,12 @@ printId("Hello");
 // 타입 별칭으로도 Union 같이 다른 타입들도 커스텀 가능
 type ID = number | string;
 
+
 // Type Alias & Interface
 // function printCord(point: {x:number, y:number}) { >> 아래처럼 수정
 function printCord(point: Point) {
-    // console.log("The coordinate's x value is " + print.x); >> print -> porint
-    // console.log("The coordinate's y value is " + print.y); >> print -> porint
+    // console.log("The coordinate's x value is " + print.x); >> print -> point
+    // console.log("The coordinate's y value is " + print.y); >> print -> point
     console.log("The coordinate's y value is " + point.y);
     console.log("The coordinate's y value is " + point.y);
 }
@@ -136,9 +137,59 @@ function calculateDistance(point1: Point, point2: Point):number { // 사용자 �
 printCord({x:100, y:100});
 // 해당 객체의 속성이 같다면,, 하지만 파라미터가 point1,2,3 ... 255까지 늘어난다면 계속해서 중복코드가 늘어남
 
-// 사용자 정의 타입 생성
-type Point = {
+// 사용자 정의 타입 생성 (대명사를 만드는 것과 같음)
+// type Point = {
+//     x: number,
+//     y: number
+// }
+
+// 별칭보다는 인터페이스 사용을 더 권장함
+interface Point {
     x: number,
     y: number
 }
+
+// 개방 폐쇄 원칙에 유리하기 때문에
+// 예시
+// interface Animal {
+//     name: string;
+// }
+
+// interface Bear extends Animal { // anumal로 부터 상속을 받음
+//     honey: boolean;
+// }
+
+// 상속을 통해 주 속성을 받고 있음
+// function getBear(): Bear {
+//     return {
+//         name: "Grizzly",
+//         honey: true
+//     };
+// }
+
+// const bear = getBear();
+// console.log(bear.name) // from Animal
+// console.log(bear.honey)
+
+// 인터페이스를 사용하면 기존 코드를 수정하지 않고 계속해서 확장 가능
+
+// Type Alias의 확장 예시
+type Animal = {
+    name: string;
+}
+
+type Bear = Animal & {
+    honey: boolean;
+}
+
+function getBear(): Bear {
+    return {
+        name: "Grizzly",
+        honey: true
+    };
+}
+
+const bear = getBear();
+console.log(bear.name) // from Animal type
+console.log(bear.honey)
 
