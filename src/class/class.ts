@@ -160,6 +160,30 @@ console.log(c1.cleaningSchedule);
 c1.performTask();
 console.log(c1.getName());
 
+// 인터페이스는 2가지 의미가 있음
+// (추상화 부분에 대한 설명)
+// 소프트웨어 관점 : 
+// 프로그램 내부 : 
+
+// 객체 구조를 정의하거나 추상화할때 인터페이스를 사용한다.
+// 여러 객체가 동일한 구조(인터페이스 구조)를 따르도록 구조를 설계해주기 위해서 사용
+// 클래스랑 혼동될 수 있으나, 클래스는 객체를 생성하기 위한 설계도이고 생성자를 무조건 포함해야 한다 (생성자를 무조건 포함한다 = 객체를 만들 수 있다)
+// 인터페이스는 형태를 정의하는 것이기 때문에 객체를 생성할 수 없다.
+
+// Interface
+interface UserDTO { // 개발자가 구조를 정의(이 값만 들어올 수 있도록 제한)
+    id:number;
+    name:string;
+    email:string;
+    createAt:Date;
+}
+
+// API 응답 형태를 정의하는 경우에는
+interface ApiResponse{
+    success:boolean;
+    data:UserDTO;
+    message?:string; // 있을수도 없을수도 있음
+}
 
 
 
