@@ -1,10 +1,8 @@
-import { StringLiteral } from "typescript";
-
 class Robot { // Members
     // Property(속성) 또는 Field(속성, 필드)
-    name: string;
-    model: string;
-    status: string = "Active"; // 기본값 Default 값을 설정 할 수 있음
+    private name: string;
+    private model: string;
+    protected status: string = "Active"; // 기본값 Default 값을 설정 할 수 있음
 
     // Constructor(생성자) / 값의 초기화와 관련있기 때문에 필수 요소이다.
     // 객체의 초기상태를 설정하기 위해 사용
@@ -15,6 +13,15 @@ class Robot { // Members
         this.name = name; // 매개변수로 필드 초기화
         this.model = model;
     } // 객체가 만들어진 후
+
+    // Getter for name
+    public getName(): string {
+        return this.name;
+    }
+
+    public getModel(): string {
+        return this.name;
+    }
 
     // Method(행동)
     // 클래스를 사용하면 한번에 수정 가능
@@ -37,9 +44,9 @@ let r2 = new Robot("R5-AA3", "Bumble")
 let r3 = new Robot("R2-aD1", "Rotus")
 
 // Accessing fields and Calling methods
-console.log(r1.name);
-console.log(r2.model);
-console.log(r3.status);
+console.log(r1.getName());
+console.log(r2.getModel());
+// console.log(r3.status());
 
 // 메서드 실행
 r1.performTask("Charging");
@@ -109,7 +116,7 @@ class CleaningRobot extends Robot { // Members
     // override performTask() {} >> // 부모의 performTask를 쓸지 청소봇의 performTask를 쓸지 모르기 때문에 override 사용
     // 다형성 : override를 통해서 다형성 구현
     performTask() { // override는 자동으로 인식되기 떄문에 생략 가능하다.
-        console.log(`${this.name} is cleaning according to the schedule ${this.cleaningSchedule.join(", ")}`);
+        console.log(`${this.getName()} is cleaning according to the schedule ${this.cleaningSchedule.join(", ")}`);
     }
 }
 
@@ -140,3 +147,19 @@ class CookingRobot { // Members
         console.log(`${this.name} is cooking according to the menus ${this.availableMenus.join(", ")}.`);
     }
 }
+
+// 접근 제어자 Visivility Modifier / Access Modifier
+// public    - protected - (java의 경우 default) - private
+// (default) : 생략되어 있는거
+// public : 모든 클래스에서 접근 가능(기본값)
+// protected : 같은 클래스와 자식 클래스에서 접근 가능
+// private : 해당 클래스 내에서만 접근 가능 (getter, setter로 접근 / 은닉화:데이터보호, 메서드로 상호작용, 가독성 부분에서도 은닉화가 도움이 됨)
+
+let c1 = new CleaningRobot("ABC-1", "Prime", ["Sun", "Mon"])
+console.log(c1.cleaningSchedule);
+c1.performTask();
+console.log(c1.getName());
+
+
+
+
