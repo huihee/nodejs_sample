@@ -1,8 +1,10 @@
+import { StringLiteral } from "typescript";
+
 class Robot { // Members
     // Property(속성) 또는 Field(속성, 필드)
     name: string;
     model: string;
-    status: string = "Active";
+    status: string = "Active"; // 기본값 Default 값을 설정 할 수 있음
 
     // Constructor(생성자) / 값의 초기화와 관련있기 때문에 필수 요소이다.
     // 객체의 초기상태를 설정하기 위해 사용
@@ -10,7 +12,7 @@ class Robot { // Members
     constructor(name: string, model: string){ // param, 매개변수 (전달받는 값)
         // this의 name과 parma의 name은 다르다
         // this.name은 클래스의 name, this = Robot
-        this.name = name; 
+        this.name = name; // 매개변수로 필드 초기화
         this.model = model;
     } // 객체가 만들어진 후
 
@@ -30,7 +32,7 @@ class Robot { // Members
 // 1. new 키워드로 로봇을 만들기 위해 값을 전달했고
 // 2. 객체가 만들어진 후
 // 3. r1,r2,r3에 만들어진 변수가 담김
-let r1 = new Robot("R2-aD1", "Optimus") // new 키워드 사용하여 인수(argument) 전달 (호출하기 위해)
+let r1 = new Robot("R2-aD1", "Optimus") // new 키워드 사용하여 인수(arguments) 전달 (호출하기 위해)
 let r2 = new Robot("R5-AA3", "Bumble")
 let r3 = new Robot("R2-aD1", "Rotus")
 
@@ -58,3 +60,34 @@ class Pet {
 let p1 = new Pet();
 console.log(p1.name);
 
+
+class User {
+    // [필드 부분]
+    username: string; // 타입만을 표기하는 경우
+    email: string;
+    job: string = "Student"; // 기본값을 주는 경우
+
+    // [생성자 부분]
+    constructor(username: string, email: string) {
+        this.username = username; // 매개변수로 초기화
+        this.email = email;
+    }
+
+    // [메서드 부분]
+    study(): void {
+        console.log(`${this.username} is studying`);
+    }
+}
+
+// [객체 생성] (new 키워드와 arguments 입력)
+let user1 = new User("홍길동", "hong@abcd.co.kr");
+let user2 = new User("김철수", "kim@example.com");
+
+// [객체의 사용, 접근] (. 도트연산자 사용)
+// 1. 인스턴스 자체 접근
+console.log(user1) // 출력 : User{username: '홍길동', email: '...'}
+// 2. 인스턴스의 세부적인 필드 접근
+console.log(user2.username); // cnffur : 김철수
+// 3. 메서드 호출
+user1.study();
+user2.study();
