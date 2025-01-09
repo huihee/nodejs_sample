@@ -45,6 +45,7 @@ function greeter(name:string){
 
 console.log(greeter("Tom"));
 
+
 // 객체 타입
 // 객체는 계층 구조를 가진다는 특징이 있음
 const car = {
@@ -84,6 +85,7 @@ printName({first: "Bob"});
 // 2. npx tsc types.ts 로 컴파일
 // 3. node types.js 로 실행
 
+
 // Any 타입 : 타입 검사를 작성 안되도록 하는 키워드 (재사용성을 위함)
 // 많은 js 프로젝트들을 사용하는데 문제가 되지 않도록 하기 위해 사용
 // >> js에서는 정상적으로 작동한다면 재활용 가능하므로 문제가 발생하지 않도록 해줌
@@ -98,4 +100,16 @@ object.bar = 100;
 object = "hello";
 const n: number = object;
 
+
+// Union 타입 (권장하진 않음, 타입을 나눠서 함수를 분리하는 것을 권장)
+function printId(id:number|string){ // 2개의 타입을 가질 수 있음을 명시 (or를 의미)
+    // console.log(id.toUpperCase()); >> 타입이 2개이므로 오류 (number일 경우 처리 불가)
+    if(typeof id === "string") {
+        console.log(id.toUpperCase());
+    } else {
+        console.log(typeof id); //number
+    }
+}
+printId(10);
+printId("Hello");
 
