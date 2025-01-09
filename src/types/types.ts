@@ -234,3 +234,65 @@ const content2 = <Content>apiResponse;
 console.log(content2.id); //OK
 console.log(content2.content); //OK
 
+
+// 리터럴 타입 (특정 값을 타입으로 하는 것 >> left, right, center가 각각 타입이다.)
+function printText(s:string, alignment: "left" | "right" | "center") {
+    //...
+}
+printText("Hello, world", "left");
+// printText("Hello, world", "centre"); // 특정 값을 타입화 하는 것이지만, 재사용성이 떨어져서 다음으로 대체한다.
+
+
+// Enum 열거형 타입 사용
+// 진행 상태 - start/progress/end
+// 값이 다른 오류를 피하기 쉽기 때문에 사용 (ex. 위의 centre)
+
+// Function to check the type of day
+// function checkDayType(): void {
+//     const currentDay = new Date().getDay();
+
+//     const isWorkoutDay = currentDay === 2 || currentDay === 4;
+//     const isWeekend = currentDay === 0 || currentDay === 6;
+
+//     const isWorkingDay = 
+//         currentDay !== 0 && currentDay !== 6 &&
+//         currentDay !== 1 && currentDay !== 3;
+
+//     console.log(`Today is day number ${currentDay}.`);
+//     console.log(`Is today a workout day? ${isWorkoutDay}.`);
+//     console.log(`Is today a weekend day? ${isWeekend}.`);
+//     console.log(`Is today a working day? ${isWorkingDay}.`);
+// }
+
+// Function to check th etype of day >> Enum 수정 버전
+function checkDayType(): void {
+    const currentDay = new Date().getDay();
+
+    const isWorkoutDay = currentDay === Day.Tuesday || currentDay === Day.Thursday;
+    const isWeekend = currentDay === Day.Sunday || currentDay === Day.Saturday;
+
+    const isWorkingDay = 
+        currentDay !== Day.Sunday && currentDay !== Day.Saturday &&
+        currentDay !== Day.Monday && currentDay !== Day.Wednesday;
+
+    console.log(`Today is day number ${currentDay}.`);
+    console.log(`Is today a workout day? ${isWorkoutDay}.`);
+    console.log(`Is today a weekend day? ${isWeekend}.`);
+    console.log(`Is today a working day? ${isWorkingDay}.`);
+}
+
+
+// 각 숫자들의 의미가 정확히 무엇인지 불확실하다.
+
+enum Day {
+    Sunday = 0,
+    Monday = 1,
+    Tuesday = 2,
+    Wednesday = 3,
+    Thursday = 4,
+    Friday = 5,
+    Saturday = 6
+}
+
+// Enum은 상태나 종류를 구분하는데 많이 사용됨.
+
